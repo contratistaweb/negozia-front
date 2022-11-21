@@ -1,0 +1,80 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="postForm" (ngSubmit)="newPost()">
+
+      <legend>New PostInterface</legend>
+      <div class="row d-flex justify-content-center align-content-center">
+        <!-- Section Title -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="title" placeholder="Post title" formControlName="title">
+          <label for="title">Post title</label>
+        </div>
+
+        <!-- Section Text -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="text" placeholder="Description" formControlName="text">
+          <label for="text">Description</label>
+        </div>
+
+        <!-- Section type -->
+        <div class="form-floating mb-3">
+          <select class="form-select" id="type" formControlName="type">
+            <option *ngFor="let option of options; let i = index" [ngValue]="option">{{option}}</option>
+          </select>
+          <label for="type">Post type</label>
+        </div>
+
+        <!-- Section Tags -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="tags" placeholder="Tags post" formControlName="tags">
+          <label for="tags">Tags post</label>
+        </div>
+
+        <!-- Section Images -->
+        <div formArrayName="images" class="p-3">
+
+          <ng-container *ngFor="let image of images.controls; let i=index">
+            <div [formGroupName]="i" class="rounded border-light shadow p-3 mb-3">
+              <p>image {{i+1}}</p>
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Image title"
+                  formControlName="imageTitle"
+                >
+                <label >Image title</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Image url"
+                  formControlName="imageUrl"
+                >
+                <label >Image url</label>
+              </div>
+
+            </div>
+            <div class="row d-flex justify-content-end align-content-center mb-3" *ngIf="postForm.controls['type'].value !== 'normal'">
+              <button type="button" class="btn btn-outline-danger col-auto" (click)="removeImage(i)">Remove image</button>
+            </div>
+
+          </ng-container>
+          <div class="row d-flex justify-content-end align-content-center mb-3" *ngIf="postForm.controls['type'].value !== 'normal'">
+            <button type="button" class="btn btn-outline-success col-auto" (click)="addImage()">Add image</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-auto">
+        <button class="btn btn-outline-success"  data-bs-dismiss="modal" aria-label="Close">Create</button>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+

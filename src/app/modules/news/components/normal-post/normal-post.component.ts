@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {PostInterface} from "../../../core/interfaces/post.interface";
 
 @Component({
-  selector: 'app-normal-post',
+  selector: 'normal-post',
   templateUrl: './normal-post.component.html',
   styleUrls: ['./normal-post.component.scss']
 })
 export class NormalPostComponent implements OnInit {
 
-  constructor() { }
+  @Input() post!: PostInterface;
 
   ngOnInit(): void {
   }
+
 
 }

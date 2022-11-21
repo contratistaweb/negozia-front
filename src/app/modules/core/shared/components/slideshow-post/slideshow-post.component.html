@@ -1,0 +1,26 @@
+<div class="card card-post px-0">
+  <div *ngIf="data.type !== 'normal'" id="carouselExampleControls" class="carousel slide rounded-top"
+       data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item image-slide" *ngFor="let image of data.images; let i = index"
+           [ngClass]="i===0?'active':''">
+        <img [src]="image.imageUrl" class="d-block w-100 rounded-top" [alt]="image.imageTitle">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{data.title}}</h5>
+    <p class="card-text">{{data.text}}</p>
+    <p class="card-text">{{data.type}}</p>
+    <p class="card-text text-muted">Published: {{data.createdAt | date}}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>

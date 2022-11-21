@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './modules/core/shared/components/main-layout/main-layout.component';
 import { MainNavbarComponent } from './modules/core/shared/components/main-navbar/main-navbar.component';
 import { MainFooterComponent } from './modules/core/shared/components/main-footer/main-footer.component';
+import {SlideshowPostComponent} from "./modules/core/shared/components/slideshow-post/slideshow-post.component";
+import {NormalPostComponent} from "./modules/core/shared/components/normal-post/normal-post.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     MainLayoutComponent,
     MainNavbarComponent,
-    MainFooterComponent
+    MainFooterComponent,
+    SlideshowPostComponent,
+    NormalPostComponent
   ],
   imports: [
     BrowserModule,
