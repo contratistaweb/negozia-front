@@ -38,7 +38,10 @@ export class PostFormComponent implements OnInit {
 
   newPost() {
     this.postsService.addNewPost(this.postForm.value).subscribe({
-      'next': () => this.refreshList.emit(true),
+      'next': () => {
+        this.refreshList.emit(true)
+        this.postForm.reset();
+      },
       'error': error => console.log(error),
     })
   }
